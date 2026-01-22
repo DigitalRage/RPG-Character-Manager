@@ -8,14 +8,19 @@
     # nested dictionary for attributtes
 
 # tuple of races
+    # tuple that contians all available races
+# tuple of class
+    # tuple containing all available classes
 
 # return characters function,takes in character dictionary:
     # returns character dictionary for easy access
 
-# Create character function, takes in character dictionary:
+# Create character function, takes in character dictionary, race tuple, class tuple:
     # ask character name
+    # print class tuple
     # ask character class
     # if not valid class ask again
+    # print race tuple
     # ask character race
     # if not valid race ask again
     # ask character current level
