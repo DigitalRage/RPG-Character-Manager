@@ -20,6 +20,134 @@
             #There would be a few options for each class, with them affecting defense, evasion, speed, and spirit differently
     #Make a function for creating a character inventory.
 def new_inven():
+    items = {
+        'Warrior':{
+            'Armor':{
+                'Chainmail':{
+
+                },
+                'Platemail':{
+
+                },
+                'Platemail and Chainmail':{
+
+                }
+            },
+            'Weapons':{
+                'Shortsword':{
+
+                },
+                'Longsword':{
+
+                },
+                'Greatsword':{
+
+                }
+            }
+        },
+        'Theif':{
+            'Armor':{
+                'Cloth':{
+
+                },
+                'Leather':{
+
+                },
+                'Padded Leather':{
+
+                }
+
+            },
+            'Weapons':{
+                'Knife':{
+
+                },
+                'Blowgun':{
+
+                },
+                'Shuriken':{
+
+                }
+            }
+        },
+        'Mage':{
+            'Armor':{
+                'Robes':{
+
+                },
+                'Padded Robes':{
+
+                },
+                'Enhanced Robes':{
+
+                }
+            },
+            'Weapons':{
+                'Shortstaff':{
+
+                },
+                'Wand':{
+
+                },
+                'Longstaff':{
+
+                },
+                
+            }
+        },
+        'Equipment':{
+            #Each be a 30 increase
+            'One':{
+                'Mana Ring':{
+
+                },
+                'Life Earring':{
+
+                },
+                'Strength Armlet':{
+
+                },
+                'Attack Glove':{
+
+                },
+                'Defence Pauldron':{
+
+                },
+                'Magical Catalyst':{
+
+                },
+                'Spiritual Runes':{
+
+                },
+                'Focus Ring':{
+
+                },
+                'Falcon Feather':{
+
+                },
+                'Rabbits Foot':{
+
+                },
+            },
+            #each be a 20 increase
+            'Two':{
+                'Mana Tome':{
+                    #Mana and Magic
+                },
+                'Mana Glove':{
+                    #Magic and spirit
+                },
+                'Healthy Armlet':{
+                    #Strength and life
+                }
+
+            },
+            #Each be a 15 increase
+            'Three':{
+
+            }
+        }
+    }
     pass
         #It will search for keywords like warrior or mage in their class and mark variables as true where needed.
         #It will print all the valid items for them
