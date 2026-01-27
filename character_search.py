@@ -69,7 +69,7 @@ def check_char(characters, search_val):
 def char_search():
 
     #from character creator import character return
-    from char_manager import char_return()
+    from char_manager_pseudocode import char_return()
     
     #from main import main
     from main import main
