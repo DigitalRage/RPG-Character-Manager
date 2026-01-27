@@ -1,29 +1,69 @@
 # MH 1st character management
 
 # dictionary to contain all characters
-# FOR ALL CHARACTERS
+chracters = {
+    # FOR ALL CHARACTERS
     # race and class stored in tuple
-    # inventory stored in list
-    # set for skills
-    # nested dictionary for attributtes
+    # skills stored a set
+    # atributtes in nested dictionary
+    # inventory in list
+    "example_char" : {
+        "race" : ("Dragonborn"),
+        "class" : ("White Mage"),
+        "level" : 10,
+        "atributtes" : {
+            "MP" : 1,
+            "HP" : 2,
+            "Str" : 3,
+            "Atk" : 4,
+            "Def" : 5,
+            "Mag" : 6,
+            "Spr" : 7,
+            "Acc" : 8,
+            "Spd" : 9,
+            "Evs" : 10
+        },
+        "skills" : {"Cure", "Esuna"},
+        "inventory" : ["Wand"]
+    }
+}
 
 # tuple of races
     # tuple that contians all available races
-# tuple of class
+race_options = ("Human", "Dragonborn", "Halfling", "Elf", "Ogre", "Dwarf", "Tiefling")
+
+# tuple of classes
     # tuple containing all available classes
+class_options = ("Black Mage", "Warrior", "Thief", "White Mage")
 
 # return characters function,takes in character dictionary:
+def char_return(character_dictionary):
     # returns character dictionary for easy access
+    return character_dictionary
 
 # Create character function, takes in character dictionary, race tuple, class tuple:
+def create_character(character_dictionary, races, classes):
     # ask character name
-    # print class tuple
-    # ask character class
-    # if not valid class ask again
-    # print race tuple
-    # ask character race
-    # if not valid race ask again
+    name = input("What is your characters name?")
+    character_dictionary[name] = {}
+    while True:
+        # print class tuple
+        for i in classes: print(f"{i}\n")
+        # ask character class
+        class_choice = input("What class is your character?")
+        # if not valid class ask again
+        if class_choice not in classes: continue
+        else: break
+    while True:
+        # print race tuple
+        for i in races: print(f"{i}\n")
+        # ask character race
+        race_choice = input("What race is your character?")
+        # if not valid race ask again
+        if race_choice not in races: continue
+        else: break
     # ask character current level
+    level = input("What level is your character?")
     # asks for character current inventory
     # creates new character with given name in the dictionary
     # adds given class under new character
