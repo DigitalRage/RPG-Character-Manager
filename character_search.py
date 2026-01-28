@@ -1,8 +1,17 @@
 #WG_CP2 character search for group
 #The code for searching though the characters
+#from character creator import character return
+from char_manager_pseudocode import char_return
 
+#from main import main
+from main import main
 #define check character
-def check_char(characters, search_val):
+def check_char():
+    #characters is character_return
+    characters = char_return()
+    #Ask what they want to search for save as search value
+    search_val = input("What do you want to search for in the character?").strip().lower()
+
     #list of checked characters, and matched characters
     matched_char = []
     #while searching
@@ -44,7 +53,7 @@ def check_char(characters, search_val):
 
             if veiw_char in matched_char:
                 #display characters(wanted character)
-                print(f"{characters[matched_char[veiw_char]]}")
+                return veiw_char
             #else
 
             else:
@@ -52,33 +61,11 @@ def check_char(characters, search_val):
                 print(f"{veiw_char} is not on options")
                 continue
 
-            #ask if they want to exit
-            exit = input("Do you want to exit? do not answer until you are done looking over the character. y/n ").strip().lower()
-            #if exit is no
-
-            if exit == "n":
-                #continue
-                continue
-
-            #else   
-            else:
-                #char_search
-                return matched_char
-
 #character search function
 def char_search():
-
-    #from character creator import character return
-    from char_manager_pseudocode import char_return
-    
-    #from main import main
-    from main import main
-    #Ask what they want to search for save as search value
-    search_val = input("What do you want to search for in the character?").strip().lower()
-    #characters is character_return
-    characters = char_return()
     #call check_char with characters argunment, & search value
-    check_char(characters, search_val)
+    check = check_char()
+    char_display(check)
     #ask if they want to exit
     exit = input("Do you want to exit the searching? do not answer until you are done looking over the character. y/n ").strip().lower()
     #if exit is no
@@ -91,4 +78,47 @@ def char_search():
     else:
         #break
         main()
+#character display function
+def char_display(char_key):
+
+    characters = char_return()
+
+    race = characters[char_key]["race"]
+    print(f"race: {race}")
+
+    race = characters[char_key]["race"]
+    print(f"race: {race}")
+    classs = characters[char_key]["class"]
+    print(f"class: {classs}")
+    level = characters[char_key]["level"]
+    print(f"level: {level}")
+    mp = characters[char_key]["attributtes"]["MP"]
+    print(f"MP: {mp}")
+    hp = characters[char_key]["attributtes"]["HP"]
+    print(f"HP: {hp}")
+    str = characters[char_key]["attributtes"]["Str"]
+    print(f"Str: {str}")
+    atk = characters[char_key]["attributtes"]["Atk"]
+    print(f"Atk: {atk}")
+    deff = characters[char_key]["attributtes"]["Def"]
+    print(f"Def: {deff}")
+    mag = characters[char_key]["attributtes"]["Mag"]
+    print(f"Mag: {mag}")
+    spr = characters[char_key]["attributtes"]["Spr"]
+    print(f"Def: {spr}")
+    acc = characters[char_key]["attributtes"]["Acc"]
+    print(f"Acc: {acc}")
+    spd = characters[char_key]["attributtes"]["Spd"]
+    print(f"Spd: {spd}")
+    evs = characters[char_key]["attributtes"]["Evs"]
+    print(f"Evs: {evs}")
+    skills = characters[char_key]["skills"]
+    print(f"Skills: {skills}")
+    inventory = characters[char_key]["inventory"]
+    print(f"Inventory: {inventory}")
+def key_from_value(characters, key_desired):
+    for key, value in characters.items():
+        if value == key_desired:
+            return key
+
 char_search()
