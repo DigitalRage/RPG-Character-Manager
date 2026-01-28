@@ -1,5 +1,11 @@
 # MH 1st character management
 
+import mult_level
+import new_inven
+import char_search
+import edit_inven
+import char_display
+
 # dictionary to contain all characters
 chracters = {
     # FOR ALL CHARACTERS
@@ -24,7 +30,14 @@ chracters = {
             "Evs" : 10
         },
         "skills" : {"Cure", "Esuna"},
-        "inventory" : ["Wand"]
+        "inventory" : {
+            "weapon" : ["Wand"],
+            "armor" : ["Robes"],
+            "equipment one" : ["Classic Italian Pizza"],
+            "equipment two" : ["Pot of Petunias"],
+            "equipment three" : ["Bowling Pin"],
+            "equipment four" : ["Sticky Hand"]
+        }
     }
 }
 
@@ -62,20 +75,37 @@ def create_character(character_dictionary, races, classes):
         # if not valid race ask again
         if race_choice not in races: continue
         else: break
-    # ask character current level
-    level = input("What level is your character?")
-    # asks for character current inventory
+    while True:
+        # ask character current level
+        level = input("What level is your character?")
+        if level.isdigit == False: continue
+        else : 
+            int(level) 
+            break
     # creates new character with given name in the dictionary
+    character_dictionary[name] = {}
     # adds given class under new character
+    character_dictionary[name["class"]] = class_choice 
     # adds given race under new character
+    character_dictionary[name["race"]] = race_choice
+    character_dictionary[name["level"]] = level
     # sets new characters stats using Blaines set level function
+    character_dictionary = mult_level(character_dictionary)
     # sets new characters inventory with Wills new inventory function
+    character_dictionary = new_inven(class_choice, character_dictionary, name)
     # returns updated character dictionary
+    return character_dictionary
 
 # character editing function, takes in character dictionary:
+def edit_character(character_ditionary):
     # User chooses character to edit with Warrens search function
+    character = char_search()
+    char_display(character)
     # ask what they want to edit (inventory, skills, attributes, name)
-    # if they want to edit inventory run Wills edit inventory function
+    to_edit = input("What do you want to edit?\n1. Inventory\n2. Skills\n3. Atributtes")
+    if to_edit == "1": 
+        # if they want to edit inventory run Wills edit inventory function
+        character_dictionary = edit_inven()
     # update inventory for that character in the character dictionary
     # if they want to edit skill run Blains update skills function
     # update skills for that character in the character dictionary
