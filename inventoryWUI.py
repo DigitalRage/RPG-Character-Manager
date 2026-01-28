@@ -19,7 +19,7 @@
         #Armor would also be class restricted, based on what was choosen in creator.
             #There would be a few options for each class, with them affecting defense, evasion, speed, and spirit differently
     #Make a function for creating a character inventory.
-def new_inven(char_class):
+def new_inven(char_class,char_dict,char_name):
     items = {
         'Warrior':{
             'Armor':{
@@ -228,11 +228,69 @@ def new_inven(char_class):
             }
         }
     }
+    num_map = {
+        '1':'One',
+        '2':'Two',
+        '3':'Three',
+        '4':'Four'    }
     print("You will now construct your inventory")
-    print("Choose your weapon")
-    for item in items[f'{char_class}']['Weapons']:
-
-    pass
+    print("Choose your weapon (Type the name exactly as shown)")
+    #Have several while loops and for loops taking care of the items
+    x = 1
+    for item in items[char_class]['Weapons'].keys():
+        print(item)
+        print(items[char_class]["Weapons"][item])
+    while True:
+        choice = input("Choose one\n")
+        if choice in items[char_class]['Weapons'].keys():
+            char_dict[char_name]['Inventory']['Weapon'] = choice
+            break
+        else:
+            print("Invalid choice")
+    print("You will now choose your armor (Type the name exactly)")
+    for item in items[char_class]['Armor'].keys():
+        print(item)
+        print(items[char_class]["Armor"][item])
+    while True:
+        choice = input("Choose one\n")
+        if choice in items[char_class]["Armor"].keys():
+            char_dict[char_name]['Inventory']['Armor'] = choice
+            break
+        else:
+            print("Invalid choice")
+    while x <= 4:
+        y = num_map[x]
+        print("You get to choose four equipment")
+        eq_choice = input("Would you like to look at equipment with 1.one stat,\n2.two stats,\n3.three stats?\n")
+        if eq_choice.isnumeric == True:
+            if eq_choice == '1':
+                for item in items['Equipment']['One'].keys():
+                    print(item)
+                    print(items['Equipment']['One'][item])
+                    choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others")
+                    if choice in items['Equipment']['One'].keys():
+                        char_dict[char_name]['Inventory'][f'Equipment {y}'] = choice
+                        x += 1
+                    elif choice == "Exit":
+                        continue
+            elif eq_choice == '2':
+                for item in items['Equipment']['Two'].keys():
+                    print(item)
+                    print(items['Equipment']['Two'][item])
+                    if choice in items['Equipment']['Two'].keys():
+                        char_dict[char_name]['Inventory'][f'Equipment {y}'] = choice
+                        x += 1
+                    elif choice == "Exit":
+                        continue
+            elif eq_choice == '3':
+                for item in items['Equipment']['Three'].keys():
+                    print(item)
+                    print(items['Equipment']['Three'][item])
+                    if choice in items['Equipment']['Three'].keys():
+                        char_dict[char_name]['Inventory'][f'Equipment {y}'] = choice
+                        x += 1
+                    elif choice == "Exit":
+                        continue
         #It will search for keywords like warrior or mage in their class and mark variables as true where needed.
         #It will print all the valid items for them
         #It would start with weapons and the armor, and then finally do equipment. a variable would keep track of how many equipment they choose, so it will end when they get all 4.
@@ -250,4 +308,5 @@ def edit_inven():
     #Function names
     #new_inven()
     #edit_inven()
-new_inven()
+char_class = 'Mage'
+new_inven(char_class)
