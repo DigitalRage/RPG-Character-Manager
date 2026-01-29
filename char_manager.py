@@ -5,7 +5,7 @@ from character_search import *
 from inventoryWUI import *
 
 # dictionary to contain all characters
-chracters = {
+characters = {
     # FOR ALL CHARACTERS
     # race and class stored in tuple
     # skills stored a set
@@ -50,7 +50,7 @@ class_options = ("Black Mage", "Warrior", "Thief", "White Mage")
 # return characters function,takes in character dictionary:
 def char_return():
     # returns character dictionary for easy access
-    return chracters
+    return characters
 
 # Create character function, takes in character dictionary, race tuple, class tuple:
 def create_character(character_dictionary, races, classes):
@@ -88,14 +88,14 @@ def create_character(character_dictionary, races, classes):
     character_dictionary[name["race"]] = race_choice
     character_dictionary[name["level"]] = level
     # sets new characters stats using Blaines set level function
-    character_dictionary = mult_level(character_dictionary)
+    character_dictionary = setup_char_value()
     # sets new characters inventory with Wills new inventory function
     character_dictionary = new_inven(class_choice, character_dictionary, name)
     # returns updated character dictionary
     return character_dictionary
 
 # character editing function, takes in character dictionary:
-def edit_character(character_ditionary):
+def edit_character(character_dictionary):
     while True:
         # User chooses character to edit with Warrens search function
         character = char_search()
