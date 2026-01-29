@@ -120,7 +120,7 @@ def edit_character(character_ditionary):
         # update attributes for that character in the character dictionary
         while True:
         # ask if they want to keep editing, if they do then go back to the start of the function
-            keep_editing == input("Do you want to keep editing? (Y/N)").lower().strip()
+            keep_editing = input("Do you want to keep editing? (Y/N)").lower().strip()
             if keep_editing == "y" or "n": break
             else: continue
         if keep_editing == "y": continue
