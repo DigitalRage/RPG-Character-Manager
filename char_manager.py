@@ -9,6 +9,7 @@ import setup_char_value
 import edit_inven
 
 # dictionary to contain all characters
+
 chracters = {
     # FOR ALL CHARACTERS
     # race and class stored in tuple
@@ -42,6 +43,7 @@ chracters = {
         }
     }
 }
+
 
 # tuple of races
     # tuple that contians all available races
