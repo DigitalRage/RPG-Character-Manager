@@ -5,7 +5,7 @@ from character_search import *
 from inventoryWUI import *
 
 # dictionary to contain all characters
-characters = {
+chracters = {
     # FOR ALL CHARACTERS
     # race and class stored in tuple
     # skills stored a set
@@ -38,6 +38,7 @@ characters = {
         }
     }
 }
+
 
 # tuple of races
     # tuple that contians all available races
