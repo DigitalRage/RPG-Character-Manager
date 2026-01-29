@@ -98,21 +98,33 @@ def create_character(character_dictionary, races, classes):
 
 # character editing function, takes in character dictionary:
 def edit_character(character_ditionary):
-    # User chooses character to edit with Warrens search function
-    character = char_search()
-    char_display(character)
-    # ask what they want to edit (inventory, skills, attributes, name)
-    to_edit = input("What do you want to edit?\n1. Inventory\n2. Skills\n3. Atributtes")
-    if to_edit == "1": 
-        # if they want to edit inventory run Wills edit inventory function
-        character_dictionary = edit_inven()
-    # update inventory for that character in the character dictionary
-    # if they want to edit skill run Blains update skills function
-    # update skills for that character in the character dictionary
-    # if they want to update attributes run Blaines update attribute function
-    # update attributes for that character in the character dictionary
-    # if they want to update name ask for the new name for the character
-    # update name for that character in the character dictionary
-    # ask if they want to keep editing, if they do then go back to the start of the function
+    while True:
+        # User chooses character to edit with Warrens search function
+        character = char_search()
+        char_display(character)
+        # ask what they want to edit (inventory, skills, attributes, name)
+        to_edit = input("What do you want to edit?\n1. Inventory\n2. Skills\n3. Atributtes")
+        if to_edit == "1": 
+            # if they want to edit inventory run Wills edit inventory function
+            # update inventory for that character in the character dictionary
+            character_dictionary = edit_inven()
+        if to_edit == "2":
+            # temporary pass
+            pass
+        # if they want to edit skill run Blains update skills function
+        # update skills for that character in the character dictionary
+        if to_edit == "3":
+            # temporary pass
+            pass
+        # if they want to update attributes run Blaines update attribute function
+        # update attributes for that character in the character dictionary
+        while True:
+        # ask if they want to keep editing, if they do then go back to the start of the function
+            keep_editing == input("Do you want to keep editing? (Y/N)").lower().strip()
+            if keep_editing == "y" or "n": break
+            else: continue
+        if keep_editing == "y": continue
+        else: break
     # if they don't return the updated dictionary
+    return character_dictionary
 
