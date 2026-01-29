@@ -1,12 +1,8 @@
 # MH 1st character management
 
-import mult_level
-import new_inven
-import char_search
-import edit_inven
-import char_display
-import setup_char_value
-import edit_inven
+from skill_stat_manager import *
+from character_search import *
+from inventoryWUI import *
 
 # dictionary to contain all characters
 chracters = {
