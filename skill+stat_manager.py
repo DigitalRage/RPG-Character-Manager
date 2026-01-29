@@ -1,28 +1,220 @@
-#Put inside file function
-    #use set level function
+from character_manager import *
+
+def setup_char_value(): 
+
+    #Characters starting stats are in nested dictionary
+    char_table_lv1 = {
+
+        'Black Mage': {
+            'Stats': {
+                'MP': 15, 'HP': 50, 'Str': 0, 'Atk': 0, 'Def': 5,
+                'Mag': 10, 'Spr': 9, 'Acc': 0, 'Spd': 25, 'Evs': 30, 'Lvl': 1
+            },
+
+            'Atributes': {
+                # Fire line
+                'Fire':      [1, 4],
+                'Fira':      [15, 10],
+                'Firaga':    [30, 20],
+
+                # Blizzard line
+                'Blizzard':  [1, 4],
+                'Blizzara':  [17, 10],
+                'Blizzarga': [35, 20],
+
+                # Thunder line
+                'Thunder':   [1, 4],
+                'Thundera':  [18, 10],
+                'Thunderga': [40, 20],
+
+                # Status spells
+                'Poison':    [5, 10],
+                'Blind':     [6, 12],
+                'Silence':   [7, 10],
+
+                # General skills
+                'Item':      [1, 0],
+                'Defend':    [1, 0]
+            }
+        },
+
+        'Warrior': {
+            'Stats': {
+                'MP': 10, 'HP': 80, 'Str': 10, 'Atk': 7, 'Def': 10,
+                'Mag': 0, 'Spr': 3, 'Acc': 70, 'Spd': 15, 'Evs': 15, 'Lvl': 1
+            },
+
+            'Atributes': {
+                'Jump':     [21, 10],
+                'Defender': [1, 0],
+
+                # General skills
+                'Attack':   [1, 0],
+                'Item':     [1, 0],
+                'Defend':   [1, 0]
+            }
+        },
+
+        'Theif': {
+            'Stats': {
+                'MP': 5, 'HP': 60, 'Str': 5, 'Atk': 9, 'Def': 7,
+                'Mag': 0, 'Spr': 6, 'Acc': 65, 'Spd': 25, 'Evs': 25, 'Lvl': 1
+            },
+
+            'Atributes': {
+                'Steal': [1, 0],
+                'Mug':   [30, 0],
+                'Taunt': [15, 0],
+                'Cheer': [21, 0],
+
+                # General skills
+                'Attack': [1, 0],
+                'Item':   [1, 0],
+                'Defend': [1, 0]
+            }
+        },
+
+        'White Mage': {
+            'Stats': {
+                'MP': 15, 'HP': 50, 'Str': 5, 'Atk': 5, 'Def': 5,
+                'Mag': 10, 'Spr': 9, 'Acc': 40, 'Spd': 25, 'Evs': 30, 'Lvl': 1
+            },
+
+            'Atributes': {
+                # Cure line
+                'Cure':    [7, 6],
+                'Cura':    [20, 12],
+                'Curaga':  [40, 25],
+
+                # Life line
+                'Life':      [25, 15],
+                'Full Life': [50, 35],
+
+                # Status heal
+                'Esuna':   [15, 10],
+
+                # General skills
+                'Attack': [1, 0],
+                'Item':   [1, 0],
+                'Defend': [1, 0]
+            }
+        }
+    }
+
+    # Stores manual stat edits
+    added_dic = {
+        'Stats': {'MP': 0, 'HP': 0, 'Str': 0, 'Atk': 0, 'Def': 0,
+                  'Mag': 0, 'Spr': 0, 'Acc': 0, 'Spd': 0, 'Evs': 0, 'Lvl': 0}
+    }
+
+    # Stores level‑based stat increases
+    level_dic = {
+        'Stats': {'MP': 0, 'HP': 0, 'Str': 0, 'Atk': 0, 'Def': 0,
+                  'Mag': 0, 'Spr': 0, 'Acc': 0, 'Spd': 0, 'Evs': 0}
+    }
 
     #While editing
-        #Characters starting stats are in nested dictionary
+    while True:
 
-        #Player choses single or all stat editor, then opens adding or removing level function, or editing a single stat function
+        #player is asked for name of character
+        name = input('Who are you editing? \n>')
+        char = character_manager.char_return()
+
+        if name not in char:
+            print("Character not found.")
+            continue
+
+        clas = char[name]['class']
+
+        #Player chooses single or all stat editor
+        choice = input('Do you want to: \n1. Edit single stat\n2. Edit level\n3. Edit attributes\n> ')
 
         #Multiply by level function:
-        #Based on level stat, other stats are multiplied by 0.1x for actual stat
+        def mult_level(): 
+            new_level = int(input("What is the character Level?\n> "))
+            base_stats = char_table_lv1[clas]['Stats']
+
+            # calculate level-based increases
+            for stat, value in base_stats.items():
+                if stat == "Lvl":
+                    continue
+                increase = int(value * 0.1 * (new_level - 1))
+                level_dic['Stats'][stat] = increase
+
+            # store new level difference
+            added_dic['Stats']['Lvl'] = new_level - base_stats['Lvl']
+
+            # unlock skills
+            print("\nChecking for new skills...")
+            for skill, data in char_table_lv1[clas]['Atributes'].items():
+                required_level = data[0]
+                if new_level >= required_level:
+                    print(f"Unlocked: {skill} (requires Lvl {required_level})")
 
         #Single stat Function: 
-        #Asks player which stat
-        #Asks user the value to change by
-        #Change single stat
-        #Saves to added stats bar in dictionary
+        def add_single():
+            stat_chose = input('What stat will you edit?\n> ')
 
+            if stat_chose not in added_dic['Stats']:
+                print("Invalid stat.")
+                return
 
-        #Choice to add character skills based on class and level
-        #If the skill is available (not already used and claimed) and a slot is left, then add the new skill to their inventory; 
-        #Else, go back to show skills
+            while True: 
+                amount = input('How much?\n> ')
+                try:
+                    amount = int(amount)
+                    break
+                except ValueError: 
+                    print('try again')
 
-        #Choice to remove character skills
-        #If no skill to remove, go back to edit
-        #else, if the name of skill equals the input of user, remove the skill. 
+            added_dic['Stats'][stat_chose] += amount
 
-        #Player is asked if they are still editing
-        #if editing equals false, then break
+        #Choice to add/remove character skills
+        def edit_attributes():
+            print("Current skills:")
+            for skill in char_table_lv1[clas]['Atributes']:
+                print("-", skill)
+
+            action = input("Add or remove?\n> ").lower()
+
+            if action == "add":
+                new_skill = input("Skill name?\n> ")
+                req = int(input("Required level?\n> "))
+                mp = int(input("MP cost?\n> "))
+                char_table_lv1[clas]['Atributes'][new_skill] = [req, mp]
+
+            elif action == "remove":
+                remove_skill = input("Which skill?\n> ")
+                if remove_skill in char_table_lv1[clas]['Atributes']:
+                    del char_table_lv1[clas]['Atributes'][remove_skill]
+
+        # Run chosen option
+        if choice == "1":
+            add_single()
+        elif choice == "2":
+            mult_level()
+        elif choice == "3":
+            edit_attributes()
+
+        # Combine base + level + added stats
+        final_stats = {}
+        base = char_table_lv1[clas]['Stats']
+
+        for stat in base:
+            if stat == "Lvl":
+                final_stats['Lvl'] = base['Lvl'] + added_dic['Stats']['Lvl']
+            else:
+                final_stats[stat] = (
+                    base[stat] +
+                    level_dic['Stats'][stat] +
+                    added_dic['Stats'][stat]
+                )
+
+        # Save final stats back to character
+        char[name]['stats'] = final_stats
+
+        editing = input("Still editing? (y/n)\n> ").lower()
+        if editing != "y":
+            break
+
+    return char
