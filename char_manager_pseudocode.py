@@ -5,6 +5,8 @@ import new_inven
 import char_search
 import edit_inven
 import char_display
+import setup_char_value
+import edit_inven
 
 # dictionary to contain all characters
 chracters = {
@@ -110,12 +112,12 @@ def edit_character(character_ditionary):
             character_dictionary = edit_inven()
         if to_edit == "2":
             # temporary pass
-            pass
+            character_dictionary = setup_char_value()
         # if they want to edit skill run Blains update skills function
         # update skills for that character in the character dictionary
         if to_edit == "3":
             # temporary pass
-            pass
+            character_dictionary = edit_inven()
         # if they want to update attributes run Blaines update attribute function
         # update attributes for that character in the character dictionary
         while True:
