@@ -52,9 +52,9 @@ race_options = ("Human", "Dragonborn", "Halfling", "Elf", "Ogre", "Dwarf", "Tief
 class_options = ("Black Mage", "Warrior", "Thief", "White Mage")
 
 # return characters function,takes in character dictionary:
-def char_return(character_dictionary):
+def char_return():
     # returns character dictionary for easy access
-    return character_dictionary
+    return chracters
 
 # Create character function, takes in character dictionary, race tuple, class tuple:
 def create_character(character_dictionary, races, classes):
