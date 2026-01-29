@@ -117,7 +117,7 @@ def edit_character(character_ditionary):
         # update skills for that character in the character dictionary
         if to_edit == "3":
             # temporary pass
-            character_dictionary = edit_inven()
+            character_dictionary = edit_inven(character_dictionary,character_dictionary[character], character_dictionary[character["class"]])
         # if they want to update attributes run Blaines update attribute function
         # update attributes for that character in the character dictionary
         while True:
