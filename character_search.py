@@ -1,7 +1,7 @@
 #WG_CP2 character search for group
 #The code for searching though the characters
 #from character creator import character return
-from char_manager import char_return
+from char_manager import *
 
 #from main import main
 from main import main
