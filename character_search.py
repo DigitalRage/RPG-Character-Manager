@@ -8,7 +8,7 @@ from main import main
 #define check character
 def check_char():
     #characters is character_return
-    characters = char_return()
+    characters = char_manager.char_return()
     #Ask what they want to search for save as search value
     search_val = input("What do you want to search for in the character?").strip().lower()
 
