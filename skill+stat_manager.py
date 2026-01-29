@@ -1,5 +1,5 @@
 #BB 1st RPG Character Manager Project
-from character_manager. import *
+from char_manager import *
 
 def setup_char_value(): 
 
@@ -119,7 +119,7 @@ def setup_char_value():
 
         #player is asked for name of character
         name = input('Who are you editing? \n>')
-        char = character_manager.char_return()
+        char = char.char_return()
 
         if name not in char:
             print("Character not found.")
