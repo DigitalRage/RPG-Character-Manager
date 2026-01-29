@@ -1,4 +1,5 @@
-from character_manager import *
+#BB 1st RPG Character Manager Project
+from character_manager. import *
 
 def setup_char_value(): 
 
