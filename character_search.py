@@ -126,6 +126,3 @@ def key_from_value(characters, key_desired):
     for key, value in characters.items():
         if value == key_desired:
             return key
-
-if __name__ == "__main__":
-    char_search()
