@@ -280,13 +280,12 @@ def new_inven(char_class,char_dict,char_name):
     while x <= 4:
         y = num_map[f'{x}']
         print("You get to choose four equipment")
-        eq_choice = input("Would you like to look at equipment with 1.one stat,\n2.two stats,\n3.three stats?\n")
-        if eq_choice.isnumeric == True:
-            if eq_choice == '1':
+        eq_choice = input("Would you like to look at equipment with \n1.one stat,\n2.two stats,\n3.three stats?\n")
+        if eq_choice == '1':
                 for item in items['Equipment']['One'].keys():
                     print(item)
                     print(items['Equipment']['One'][item])
-                choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others")
+                choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others\n")
                 if choice in items['Equipment']['One'].keys():
                         char_dict[char_name]['Inventory'][f'Equipment {y}'] = choice
                         x += 1
@@ -295,11 +294,11 @@ def new_inven(char_class,char_dict,char_name):
                 else:
                         print("Invalid input")
                         continue
-            elif eq_choice == '2':
+        elif eq_choice == '2':
                 for item in items['Equipment']['Two'].keys():
                     print(item)
                     print(items['Equipment']['Two'][item])
-                choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others")
+                choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others\n")
                 if choice in items['Equipment']['Two'].keys():
                         char_dict[char_name]['Inventory'][f'Equipment {y}'] = choice
                         x += 1
@@ -308,11 +307,11 @@ def new_inven(char_class,char_dict,char_name):
                 else:
                         print("Invalid input")
                         continue
-            elif eq_choice == '3':
+        elif eq_choice == '3':
                 for item in items['Equipment']['Three'].keys():
                     print(item)
                     print(items['Equipment']['Three'][item])
-                choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others")
+                choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others\n")
                 if choice in items['Equipment']['Three'].keys():
                         char_dict[char_name]['Inventory'][f'Equipment {y}'] = choice
                         x += 1
@@ -422,7 +421,13 @@ def edit_inven(char_dict,char_name,char_class):
     #new_inven()
     #edit_inven()
 
-
-
+char_dict = {
+     'charles':{
+          'Inventory':{
+               
+          }
+     }
+}
+char_name = 'charles'
 char_class = 'Mage'
-new_inven(char_class)
+new_inven(char_class,char_dict,char_name)
