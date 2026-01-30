@@ -424,5 +424,7 @@ def edit_inven(char_dict,char_name,char_class):
 
 
 
-char_class = 'Mage'
-new_inven(char_class)
+if __name__ == "__main__":
+    # Example usage (do not run on import):
+    # new_inven('Mage', {'example_char': {'Inventory': {}}}, 'example_char')
+    pass

@@ -1,4 +1,8 @@
 #Import other files for functions
+from char_manager import character_creator
+from character_search import insertsearchfunc
+from inventoryWUI import character_editor
+
 
 import sys
 from char_manager import *
@@ -22,3 +26,4 @@ def main():
         else:
             print("Invalid choice, try again")
 #Run Main
+main()
