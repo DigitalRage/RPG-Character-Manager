@@ -2,9 +2,6 @@
 #The code for searching though the characters
 #from character creator import character return
 from char_manager import char_return
-
-#from main import main
-from main import main
 #define check character
 def check_char():
     characters = char_return()
@@ -68,7 +65,7 @@ def char_search():
     #else   
     else:
         #break
-        main()
+        return 0
 #character display function
 def char_display(char_key):
 
