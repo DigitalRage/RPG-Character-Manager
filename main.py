@@ -1,7 +1,6 @@
 #Import other files for functions
-from char_manager import character_creator
-from character_search import insertsearchfunc
-from inventoryWUI import character_editor
+from char_manager import create_character, edit_character
+from character_search import char_search
 
 
 import sys
@@ -11,11 +10,11 @@ def main():
     while True:
         choice = input("What would you like to do?\n1.Create a new character\n2.Edit an already made character\n3.Search through characters\n4.Exit\n")
         if choice == '1':
-            character_creator()
+            create_character()
         elif choice == '2':
-            character_editor()
+            edit_character()
         elif choice == '3':
-            insertsearchfunc()
+            char_search()
         if choice == '4':
             print("Goodbye")
             sys.exit()
