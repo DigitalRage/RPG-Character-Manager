@@ -1,5 +1,5 @@
 #BB 1st RPG Character Manager Project
-from char_manager import char_return
+from main import char_return
 
 def setup_char_value(): 
 
