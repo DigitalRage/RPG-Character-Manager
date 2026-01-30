@@ -13,7 +13,7 @@ def main():
             create_character()
         elif choice == '2':
             edit_character()
-        elif choice == '3':
+        elif choice == '3':  
             char_search()
         if choice == '4':
             print("Goodbye")
