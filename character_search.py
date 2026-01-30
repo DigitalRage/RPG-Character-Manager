@@ -9,7 +9,7 @@ from main import main
 def check_char():
     characters = char_return()
     while True:
-        search_val = input("Do you want to search for? This can be a name, a race, a class, or having a certain number in any attribute. ").strip().lower()
+        search_val = input("What do you want to search for? This can be a name, a race, a class, or having a certain number in any attribute. ").strip().lower()
 
         matched_char = []
         for name, data in characters.items():
