@@ -79,34 +79,49 @@ def char_display(char_key):
 
     race = characters[char_key]["race"]
     print(f"race: {race}\n")
+
     classs = characters[char_key]["class"]
     print(f"class: {classs}\n")
+    
     level = characters[char_key]["level"]
     print(f"level: {level}\n")
+    
     mp = characters[char_key]["atributtes"]["MP"]
     print(f"MP: {mp}\n")
+    
     hp = characters[char_key]["atributtes"]["HP"]
     print(f"HP: {hp}\n")
+    
     str = characters[char_key]["atributtes"]["Str"]
     print(f"Str: {str}\n")
+    
     atk = characters[char_key]["atributtes"]["Atk"]
     print(f"Atk: {atk}\n")
+    
     deff = characters[char_key]["atributtes"]["Def"]
     print(f"Def: {deff}")
+    
     mag = characters[char_key]["atributtes"]["Mag"]
     print(f"Mag: {mag}\n")
+    
     spr = characters[char_key]["atributtes"]["Spr"]
     print(f"Spr: {spr}\n")
+    
     acc = characters[char_key]["atributtes"]["Acc"]
     print(f"Acc: {acc} \n")
+    
     spd = characters[char_key]["atributtes"]["Spd"]
     print(f"Spd: {spd}\n")
+    
     evs = characters[char_key]["atributtes"]["Evs"]
     print(f"Evs: {evs}\n")
+    
     skills = characters[char_key]["skills"]
     print(f"Skills: {skills}\n")
+    
     inventory = characters[char_key]["inventory"]
     print(f"Inventory: {inventory}\n")
+
 def key_from_value(characters, key_desired):
     for key, value in characters.items():
         if value == key_desired:
