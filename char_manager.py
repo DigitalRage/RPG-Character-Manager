@@ -139,8 +139,3 @@ def edit_character(character_dictionary):
         else: break
     # if they don't return the updated dictionary
     return character_dictionary
-
-if __name__ == "__main__":
-    create_character()
-    edit_character()
-    char_return()
