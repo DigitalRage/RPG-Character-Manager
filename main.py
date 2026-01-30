@@ -15,7 +15,7 @@ def main():
         elif choice == '2':
             character_editor()
         elif choice == '3':
-            insertsearchfunc
+            insertsearchfunc()
         if choice == '4':
             print("Goodbye")
             sys.exit()

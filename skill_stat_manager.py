@@ -219,3 +219,5 @@ def setup_char_value():
             break
 
     return char
+
+setup_char_value()
