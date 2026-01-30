@@ -1,7 +1,8 @@
 # MH 1st character management
 
-from skill_stat_manager import *
-from inventoryWUI import *
+from skill_stat_manager import setup_char_value
+from inventoryWUI import new_inven, edit_inven
+from character_search import char_search, char_display
 
 # dictionary to contain all characters
 characters = {
@@ -55,38 +56,51 @@ def char_return():
 # Create character function, takes in character dictionary, race tuple, class tuple:
 def create_character(character_dictionary, races, classes):
     # ask character name
-    name = input("What is your characters name?")
+    name = input("What is your characters name?\n")
     character_dictionary[name] = {}
     while True:
         # print class tuple
-        for i in classes: print(f"{i}\n")
+        for i in classes: print(f"{classes.index(i)}. {i}\n")
         # ask character class
-        class_choice = input("What class is your character?")
+        class_choice = input("What class is your character?\n")
         # if not valid class ask again
-        if class_choice not in classes: continue
-        else: break
+        if class_choice.isdigit():
+            class_choice = int(class_choice)
+            class_choice = classes[class_choice]
+            break
+        else:
+            print("That is not an option.")
+            continue
     while True:
+        print("\n")
         # print race tuple
-        for i in races: print(f"{i}\n")
+        for i in races: print(f"{races.index(i)}. {i}\n")
         # ask character race
-        race_choice = input("What race is your character?")
+        race_choice = input("What race is your character?\n")
         # if not valid race ask again
-        if race_choice not in races: continue
-        else: break
+        if race_choice.isdigit():
+            race_choice = int(race_choice)
+            race_choice = races[race_choice]
+            break
+        else:
+            print("That is not an option.")
+            continue
     while True:
         # ask character current level
-        level = input("What level is your character?")
-        if level.isdigit == False: continue
-        else : 
+        level = input("What level is your character?\n")
+        if level.isdigit == False:
+            print("That is not an option.")
+            continue
+        else: 
             int(level) 
             break
     # creates new character with given name in the dictionary
     character_dictionary[name] = {}
     # adds given class under new character
-    character_dictionary[name["class"]] = class_choice 
+    character_dictionary[name]["class"] = class_choice 
     # adds given race under new character
-    character_dictionary[name["race"]] = race_choice
-    character_dictionary[name["level"]] = level
+    character_dictionary[name]["race"] = race_choice
+    character_dictionary[name]["level"] = level
     # sets new characters stats using Blaines set level function
     character_dictionary = setup_char_value()
     # sets new characters inventory with Wills new inventory function
@@ -96,13 +110,12 @@ def create_character(character_dictionary, races, classes):
 
 # character editing function, takes in character dictionary:
 def edit_character(character_dictionary):
-    from character_search import char_search, char_display
     while True:
         # User chooses character to edit with Warrens search function
         character = char_search()
         char_display(character)
         # ask what they want to edit (inventory, skills, attributes, name)
-        to_edit = input("What do you want to edit?\n1. Inventory\n2. Skills\n3. Atributtes")
+        to_edit = input("What do you want to edit?\n1. Inventory\n2. Skills\n3. Atributtes\n")
         if to_edit == "1": 
             # if they want to edit inventory run Wills edit inventory function
             # update inventory for that character in the character dictionary
@@ -119,7 +132,7 @@ def edit_character(character_dictionary):
         # update attributes for that character in the character dictionary
         while True:
         # ask if they want to keep editing, if they do then go back to the start of the function
-            keep_editing = input("Do you want to keep editing? (Y/N)").lower().strip()
+            keep_editing = input("Do you want to keep editing? (Y/N)\n").lower().strip()
             if keep_editing == "y" or "n": break
             else: continue
         if keep_editing == "y": continue
@@ -127,3 +140,7 @@ def edit_character(character_dictionary):
     # if they don't return the updated dictionary
     return character_dictionary
 
+if __name__ == "__main__":
+    create_character()
+    edit_character()
+    char_return()
