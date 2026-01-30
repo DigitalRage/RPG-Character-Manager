@@ -9,7 +9,7 @@ from main import main
 def check_char():
     characters = char_return()
     while True:
-        search_val = input("What do you want to search for in the character? ").strip().lower()
+        search_val = input("Do you want to search for? This can be a name, a race, a class, or having a certain number in any attribute. ").strip().lower()
 
         matched_char = []
         for name, data in characters.items():
@@ -78,35 +78,35 @@ def char_display(char_key):
     print(f"race: {race}")
 
     race = characters[char_key]["race"]
-    print(f"race: {race}")
+    print(f"race: {race}\n")
     classs = characters[char_key]["class"]
-    print(f"class: {classs}")
+    print(f"class: {classs}\n")
     level = characters[char_key]["level"]
-    print(f"level: {level}")
+    print(f"level: {level}\n")
     mp = characters[char_key]["atributtes"]["MP"]
-    print(f"MP: {mp}")
+    print(f"MP: {mp}\n")
     hp = characters[char_key]["atributtes"]["HP"]
-    print(f"HP: {hp}")
+    print(f"HP: {hp}\n")
     str = characters[char_key]["atributtes"]["Str"]
-    print(f"Str: {str}")
+    print(f"Str: {str}\n")
     atk = characters[char_key]["atributtes"]["Atk"]
-    print(f"Atk: {atk}")
+    print(f"Atk: {atk}\n")
     deff = characters[char_key]["atributtes"]["Def"]
     print(f"Def: {deff}")
     mag = characters[char_key]["atributtes"]["Mag"]
-    print(f"Mag: {mag}")
+    print(f"Mag: {mag}\n")
     spr = characters[char_key]["atributtes"]["Spr"]
-    print(f"Def: {spr}")
+    print(f"Spr: {spr}\n")
     acc = characters[char_key]["atributtes"]["Acc"]
-    print(f"Acc: {acc}")
+    print(f"Acc: {acc} \n")
     spd = characters[char_key]["atributtes"]["Spd"]
-    print(f"Spd: {spd}")
+    print(f"Spd: {spd}\n")
     evs = characters[char_key]["atributtes"]["Evs"]
-    print(f"Evs: {evs}")
+    print(f"Evs: {evs}\n")
     skills = characters[char_key]["skills"]
-    print(f"Skills: {skills}")
+    print(f"Skills: {skills}\n")
     inventory = characters[char_key]["inventory"]
-    print(f"Inventory: {inventory}")
+    print(f"Inventory: {inventory}\n")
 def key_from_value(characters, key_desired):
     for key, value in characters.items():
         if value == key_desired:
