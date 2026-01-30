@@ -7,59 +7,50 @@ from char_manager import char_return
 from main import main
 #define check character
 def check_char():
-    #characters is character_return
     characters = char_return()
-    #Ask what they want to search for save as search value
-    search_val = input("What do you want to search for in the character?").strip().lower()
-
-    #list of checked characters, and matched characters
-    matched_char = []
-    #while searching
-
     while True:
-        #set value of variable to 0 saved as value_key
-        value_key = 0
-        #get all of the keys and add them to a list
+        search_val = input("What do you want to search for in the character? ").strip().lower()
 
-        for i in len(characters):
-            keys = list(characters.keys())
-        #if loop equal first
-
-        if value_key == 0:
-            #for the length of characters
-
-            for i in len(characters):
-                #if search value in characters(key value placed in the list at the position equal to the value
-
-                if search_val in characters[keys[value_key]]:
-                    #add the character key to list of matched keys
-                    matched_char.append(keys(value_key))
-                #add 1 to value_key
-                value_key += 1
-
-        #if there is characters
-        if len(matched_char) > 0:
-
-            #for length of the matched value    
-            for i in len(matched_char):
-                #display the value from the list of keys starting at the first value and say that they have the specefied value
-                print(f"{matched_char(i-1)} has value {search_val}")
-        #ask what character they want to look at
-        veiw_char = input("What character did you want to look at? ").strip().lower()
-        #while true
-
-        while True:
-            #if character is in matched keys
-
-            if veiw_char in matched_char:
-                #display characters(wanted character)
-                return veiw_char
-            #else
-
-            else:
-                #display not an option
-                print(f"{veiw_char} is not on options")
+        matched_char = []
+        for name, data in characters.items():
+            # check name match
+            if search_val in name.lower():
+                matched_char.append(name)
                 continue
+
+            # helper to search nested structures
+            def search_in(obj):
+                if isinstance(obj, dict):
+                    return any(search_in(v) for v in obj.values())
+                if isinstance(obj, (list, set, tuple)):
+                    return any(search_in(v) for v in obj)
+                if isinstance(obj, (int, float)):
+                    return search_val == str(obj).lower()
+                if isinstance(obj, str):
+                    return search_val in obj.lower()
+                return False
+
+            if search_in(data):
+                matched_char.append(name)
+
+        if not matched_char:
+            print(f"No characters found matching '{search_val}'. Try again.")
+            continue
+
+        print("Matches:")
+        for i, name in enumerate(matched_char, 1):
+            print(f"{i}. {name}")
+
+        choice = input("Which character do you want to look at? (type name or number) ").strip()
+        if choice.isdigit():
+            idx = int(choice) - 1
+            if 0 <= idx < len(matched_char):
+                return matched_char[idx]
+        else:
+            if choice in matched_char:
+                return choice
+
+        print(f"{choice} is not an option; try again.")
 
 #character search function
 def char_search():
@@ -92,25 +83,25 @@ def char_display(char_key):
     print(f"class: {classs}")
     level = characters[char_key]["level"]
     print(f"level: {level}")
-    mp = characters[char_key]["attributtes"]["MP"]
+    mp = characters[char_key]["atributtes"]["MP"]
     print(f"MP: {mp}")
-    hp = characters[char_key]["attributtes"]["HP"]
+    hp = characters[char_key]["atributtes"]["HP"]
     print(f"HP: {hp}")
-    str = characters[char_key]["attributtes"]["Str"]
+    str = characters[char_key]["atributtes"]["Str"]
     print(f"Str: {str}")
-    atk = characters[char_key]["attributtes"]["Atk"]
+    atk = characters[char_key]["atributtes"]["Atk"]
     print(f"Atk: {atk}")
-    deff = characters[char_key]["attributtes"]["Def"]
+    deff = characters[char_key]["atributtes"]["Def"]
     print(f"Def: {deff}")
-    mag = characters[char_key]["attributtes"]["Mag"]
+    mag = characters[char_key]["atributtes"]["Mag"]
     print(f"Mag: {mag}")
-    spr = characters[char_key]["attributtes"]["Spr"]
+    spr = characters[char_key]["atributtes"]["Spr"]
     print(f"Def: {spr}")
-    acc = characters[char_key]["attributtes"]["Acc"]
+    acc = characters[char_key]["atributtes"]["Acc"]
     print(f"Acc: {acc}")
-    spd = characters[char_key]["attributtes"]["Spd"]
+    spd = characters[char_key]["atributtes"]["Spd"]
     print(f"Spd: {spd}")
-    evs = characters[char_key]["attributtes"]["Evs"]
+    evs = characters[char_key]["atributtes"]["Evs"]
     print(f"Evs: {evs}")
     skills = characters[char_key]["skills"]
     print(f"Skills: {skills}")
@@ -121,4 +112,5 @@ def key_from_value(characters, key_desired):
         if value == key_desired:
             return key
 
-char_search()
+if __name__ == "__main__":
+    char_search()

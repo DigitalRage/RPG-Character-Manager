@@ -1,11 +1,10 @@
 # MH 1st character management
 
 from skill_stat_manager import *
-from character_search import *
 from inventoryWUI import *
 
 # dictionary to contain all characters
-chracters = {
+characters = {
     # FOR ALL CHARACTERS
     # race and class stored in tuple
     # skills stored a set
@@ -97,6 +96,7 @@ def create_character(character_dictionary, races, classes):
 
 # character editing function, takes in character dictionary:
 def edit_character(character_dictionary):
+    from character_search import char_search, char_display
     while True:
         # User chooses character to edit with Warrens search function
         character = char_search()
