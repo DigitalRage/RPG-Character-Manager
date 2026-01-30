@@ -219,5 +219,3 @@ def setup_char_value():
             break
 
     return char
-if __name__ == "__main__":
-    setup_char_value()
