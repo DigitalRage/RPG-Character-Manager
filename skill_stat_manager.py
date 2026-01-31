@@ -1,5 +1,5 @@
 #BB 1st RPG Character Manager Project
-from main import char_return
+# char_return will be imported inside setup_char_value to avoid circular import
 
 def setup_char_value(): 
 
@@ -118,6 +118,8 @@ def setup_char_value():
     while True:
 
         #player is asked for name of character
+        # import here to avoid circular import at module load
+        from char_manager import char_return
         name = input('Who are you editing? \n>')
         char = char_return()
 

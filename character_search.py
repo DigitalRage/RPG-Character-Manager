@@ -1,12 +1,10 @@
 #WG_CP2 character search for group
 #The code for searching though the characters
 #from character creator import character return
-from char_manager import char_return
 
-#from main import main
-from main import main
 #define check character
 def check_char():
+    from char_manager import char_return
     characters = char_return()
     while True:
         search_val = input("Do you want to search for? This can be a name, a race, a class, or having a certain number in any attribute. ").strip().lower()
@@ -68,10 +66,11 @@ def char_search():
     #else   
     else:
         #break
-        main()
+        return
 #character display function
 def char_display(char_key):
 
+    from char_manager import char_return
     characters = char_return()
 
     race = characters[char_key]["race"]
