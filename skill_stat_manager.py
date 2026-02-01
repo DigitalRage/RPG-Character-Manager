@@ -1,106 +1,121 @@
 #BB 1st RPG Character Manager Project
 # char_return will be imported inside setup_char_value to avoid circular import
 
-def setup_char_value(): 
+# Characters starting stats are in nested dictionary and available module-wide
+CHAR_TABLE = {
 
-    #Characters starting stats are in nested dictionary
-    char_table_lv1 = {
-
-        'Black Mage': {
-            'Stats': {
-                'MP': 15, 'HP': 50, 'Str': 0, 'Atk': 0, 'Def': 5,
-                'Mag': 10, 'Spr': 9, 'Acc': 0, 'Spd': 25, 'Evs': 30, 'Lvl': 1
-            },
-
-            'Atributes': {
-                # Fire line
-                'Fire':      [1, 4],
-                'Fira':      [15, 10],
-                'Firaga':    [30, 20],
-
-                # Blizzard line
-                'Blizzard':  [1, 4],
-                'Blizzara':  [17, 10],
-                'Blizzarga': [35, 20],
-
-                # Thunder line
-                'Thunder':   [1, 4],
-                'Thundera':  [18, 10],
-                'Thunderga': [40, 20],
-
-                # Status spells
-                'Poison':    [5, 10],
-                'Blind':     [6, 12],
-                'Silence':   [7, 10],
-
-                # General skills
-                'Item':      [1, 0],
-                'Defend':    [1, 0]
-            }
+    'Black Mage': {
+        'Stats': {
+            'MP': 15, 'HP': 50, 'Str': 0, 'Atk': 0, 'Def': 5,
+            'Mag': 10, 'Spr': 9, 'Acc': 0, 'Spd': 25, 'Evs': 30, 'Lvl': 1
         },
 
-        'Warrior': {
-            'Stats': {
-                'MP': 10, 'HP': 80, 'Str': 10, 'Atk': 7, 'Def': 10,
-                'Mag': 0, 'Spr': 3, 'Acc': 70, 'Spd': 15, 'Evs': 15, 'Lvl': 1
-            },
+        'Atributes': {
+            # Fire line
+            'Fire':      [1, 4],
+            'Fira':      [15, 10],
+            'Firaga':    [30, 20],
 
-            'Atributes': {
-                'Jump':     [21, 10],
-                'Defender': [1, 0],
+            # Blizzard line
+            'Blizzard':  [1, 4],
+            'Blizzara':  [17, 10],
+            'Blizzarga': [35, 20],
 
-                # General skills
-                'Attack':   [1, 0],
-                'Item':     [1, 0],
-                'Defend':   [1, 0]
-            }
+            # Thunder line
+            'Thunder':   [1, 4],
+            'Thundera':  [18, 10],
+            'Thunderga': [40, 20],
+
+            # Status spells
+            'Poison':    [5, 10],
+            'Blind':     [6, 12],
+            'Silence':   [7, 10],
+
+            # General skills
+            'Item':      [1, 0],
+            'Defend':    [1, 0]
+        }
+    },
+
+    'Warrior': {
+        'Stats': {
+            'MP': 10, 'HP': 80, 'Str': 10, 'Atk': 7, 'Def': 10,
+            'Mag': 0, 'Spr': 3, 'Acc': 70, 'Spd': 15, 'Evs': 15, 'Lvl': 1
         },
 
-        'Theif': {
-            'Stats': {
-                'MP': 5, 'HP': 60, 'Str': 5, 'Atk': 9, 'Def': 7,
-                'Mag': 0, 'Spr': 6, 'Acc': 65, 'Spd': 25, 'Evs': 25, 'Lvl': 1
-            },
+        'Atributes': {
+            'Jump':     [21, 10],
+            'Defender': [1, 0],
 
-            'Atributes': {
-                'Steal': [1, 0],
-                'Mug':   [30, 0],
-                'Taunt': [15, 0],
-                'Cheer': [21, 0],
+            # General skills
+            'Attack':   [1, 0],
+            'Item':     [1, 0],
+            'Defend':   [1, 0]
+        }
+    },
 
-                # General skills
-                'Attack': [1, 0],
-                'Item':   [1, 0],
-                'Defend': [1, 0]
-            }
+    'Thief': {
+        'Stats': {
+            'MP': 5, 'HP': 60, 'Str': 5, 'Atk': 9, 'Def': 7,
+            'Mag': 0, 'Spr': 6, 'Acc': 65, 'Spd': 25, 'Evs': 25, 'Lvl': 1
         },
 
-        'White Mage': {
-            'Stats': {
-                'MP': 15, 'HP': 50, 'Str': 5, 'Atk': 5, 'Def': 5,
-                'Mag': 10, 'Spr': 9, 'Acc': 40, 'Spd': 25, 'Evs': 30, 'Lvl': 1
-            },
+        'Atributes': {
+            'Steal': [1, 0],
+            'Mug':   [30, 0],
+            'Taunt': [15, 0],
+            'Cheer': [21, 0],
 
-            'Atributes': {
-                # Cure line
-                'Cure':    [7, 6],
-                'Cura':    [20, 12],
-                'Curaga':  [40, 25],
+            # General skills
+            'Attack': [1, 0],
+            'Item':   [1, 0],
+            'Defend': [1, 0]
+        }
+    },
 
-                # Life line
-                'Life':      [25, 15],
-                'Full Life': [50, 35],
+    'White Mage': {
+        'Stats': {
+            'MP': 15, 'HP': 50, 'Str': 5, 'Atk': 5, 'Def': 5,
+            'Mag': 10, 'Spr': 9, 'Acc': 40, 'Spd': 25, 'Evs': 30, 'Lvl': 1
+        },
 
-                # Status heal
-                'Esuna':   [15, 10],
+        'Atributes': {
+            # Cure line
+            'Cure':    [7, 6],
+            'Cura':    [20, 12],
+            'Curaga':  [40, 25],
 
-                # General skills
-                'Attack': [1, 0],
-                'Item':   [1, 0],
-                'Defend': [1, 0]
-            }
+            # Life line
+            'Life':      [25, 15],
+            'Full Life': [50, 35],
+
+            # Status heal
+            'Esuna':   [15, 10],
+
+            # General skills
+            'Attack': [1, 0],
+            'Item':   [1, 0],
+            'Defend': [1, 0]
         }
     }
+}
+
+
+def get_stats_for_class(clas, level=1):
+    """Return a dict of stats adjusted for level for class `clas`."""
+    base = CHAR_TABLE[clas]['Stats']
+    # compute level increases similarly to original logic
+    final = {}
+    for stat, value in base.items():
+        if stat == 'Lvl':
+            final['Lvl'] = base['Lvl'] + (int(level) - 1)
+        else:
+            increase = int(value * 0.1 * (int(level) - 1))
+            final[stat] = value + increase
+    return final
+
+
+def setup_char_value(target_name=None):
 
     # Stores manual stat edits
     added_dic = {
@@ -117,15 +132,20 @@ def setup_char_value():
     #While editing
     while True:
 
-        #player is asked for name of character
-        # import here to avoid circular import at module load
+        # get characters dict (import here to avoid circular import at module load)
         from char_manager import char_return
-        name = input('Who are you editing? \n>')
         char = char_return()
 
-        if name not in char:
-            print("Character not found.")
-            continue
+        if target_name:
+            name = target_name
+            if name not in char:
+                print("Character not found.")
+                return char
+        else:
+            name = input('Who are you editing? \n>')
+            if name not in char:
+                print("Character not found.")
+                continue
 
         clas = char[name]['class']
 
@@ -135,7 +155,7 @@ def setup_char_value():
         #Multiply by level function:
         def mult_level(): 
             new_level = int(input("What is the character Level?\n> "))
-            base_stats = char_table_lv1[clas]['Stats']
+            base_stats = CHAR_TABLE[clas]['Stats']
 
             # calculate level-based increases
             for stat, value in base_stats.items():
@@ -149,7 +169,7 @@ def setup_char_value():
 
             # unlock skills
             print("\nChecking for new skills...")
-            for skill, data in char_table_lv1[clas]['Atributes'].items():
+            for skill, data in CHAR_TABLE[clas]['Atributes'].items():
                 required_level = data[0]
                 if new_level >= required_level:
                     print(f"Unlocked: {skill} (requires Lvl {required_level})")
@@ -175,7 +195,7 @@ def setup_char_value():
         #Choice to add/remove character skills
         def edit_attributes():
             print("Current skills:")
-            for skill in char_table_lv1[clas]['Atributes']:
+            for skill in CHAR_TABLE[clas]['Atributes']:
                 print("-", skill)
 
             action = input("Add or remove?\n> ").lower()
@@ -184,12 +204,12 @@ def setup_char_value():
                 new_skill = input("Skill name?\n> ")
                 req = int(input("Required level?\n> "))
                 mp = int(input("MP cost?\n> "))
-                char_table_lv1[clas]['Atributes'][new_skill] = [req, mp]
+                CHAR_TABLE[clas]['Atributes'][new_skill] = [req, mp]
 
             elif action == "remove":
                 remove_skill = input("Which skill?\n> ")
-                if remove_skill in char_table_lv1[clas]['Atributes']:
-                    del char_table_lv1[clas]['Atributes'][remove_skill]
+                if remove_skill in CHAR_TABLE[clas]['Atributes']:
+                    del CHAR_TABLE[clas]['Atributes'][remove_skill]
 
         # Run chosen option
         if choice == "1":
@@ -201,7 +221,7 @@ def setup_char_value():
 
         # Combine base + level + added stats
         final_stats = {}
-        base = char_table_lv1[clas]['Stats']
+        base = CHAR_TABLE[clas]['Stats']
 
         for stat in base:
             if stat == "Lvl":
@@ -213,8 +233,8 @@ def setup_char_value():
                     added_dic['Stats'][stat]
                 )
 
-        # Save final stats back to character
-        char[name]['stats'] = final_stats
+        # Save final stats back to character (use existing 'atributtes' key used elsewhere)
+        char[name]['atributtes'] = final_stats
 
         editing = input("Still editing? (y/n)\n> ").lower()
         if editing != "y":
