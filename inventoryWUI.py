@@ -290,14 +290,14 @@ def new_inven(char_class,char_dict,char_name):
             print("Invalid choice")
     while x <= 4:
         print("You get to choose four equipment")
-        eq_choice = input("Would you like to look at equipment with 1.one stat,\n2.two stats,\n3.three stats?\n")
+        eq_choice = input("Would you like to look at equipment with \n1.one stat,\n2.two stats,\n3.three stats?\n")
         if eq_choice.isdigit():
             slot_name = f"equipment {x}"
             if eq_choice == '1':
                 for item in items['Equipment']['One'].keys():
                     print(item)
                     print(items['Equipment']['One'][item])
-                choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others")
+                choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others\n")
                 if choice in items['Equipment']['One'].keys():
                         char_dict[char_name]['inventory'][slot_name] = [choice]
                         x += 1
@@ -310,7 +310,7 @@ def new_inven(char_class,char_dict,char_name):
                 for item in items['Equipment']['Two'].keys():
                     print(item)
                     print(items['Equipment']['Two'][item])
-                choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others")
+                choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others\n")
                 if choice in items['Equipment']['Two'].keys():
                         char_dict[char_name]['inventory'][slot_name] = [choice]
                         x += 1
@@ -323,7 +323,7 @@ def new_inven(char_class,char_dict,char_name):
                 for item in items['Equipment']['Three'].keys():
                     print(item)
                     print(items['Equipment']['Three'][item])
-                choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others")
+                choice  = input("Choose one of the listed items (Type exactly), or type 'Exit' if you want to go back to look at others\n")
                 if choice in items['Equipment']['Three'].keys():
                         char_dict[char_name]['inventory'][slot_name] = [choice]
                         x += 1
