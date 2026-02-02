@@ -1,13 +1,9 @@
 #WG_CP2 character search for group
 #The code for searching though the characters
 #from character creator import character return
-from char_manager import char_return
 
-#from main import main
-from main import main
 #define check character
-def check_char():
-    characters = char_return()
+def check_char(characters):
     while True:
         search_val = input("Do you want to search for? This can be a name, a race, a class, or having a certain number in any attribute. ").strip().lower()
 
@@ -53,26 +49,25 @@ def check_char():
         print(f"{choice} is not an option; try again.")
 
 #character search function
-def char_search():
+def char_search(characters):
     #call check_char with characters argunment, & search value
-    check = check_char()
-    char_display(check)
+    check = check_char(characters)
+    char_display(check, characters)
     #ask if they want to exit
     exit = input("Do you want to exit the searching? do not answer until you are done looking over the character. y/n ").strip().lower()
     #if exit is no
 
     if exit == "n":
         #continue
-        check_char()
+        check_char(characters)
 
     #else   
     else:
         #break
-        main()
-#character display function
-def char_display(char_key):
+        return
 
-    characters = char_return()
+#character display function
+def char_display(char_key, characters):
 
     race = characters[char_key]["race"]
     print(f"race: {race}")
@@ -107,10 +102,11 @@ def char_display(char_key):
     print(f"Skills: {skills}\n")
     inventory = characters[char_key]["inventory"]
     print(f"Inventory: {inventory}\n")
+
 def key_from_value(characters, key_desired):
     for key, value in characters.items():
         if value == key_desired:
             return key
 
 if __name__ == "__main__":
-    char_search()
+    pass
