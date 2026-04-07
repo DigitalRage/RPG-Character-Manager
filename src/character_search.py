@@ -1,8 +1,4 @@
-#WG_CP2 character search for group
-#The code for searching though the characters
-#from character creator import character return
-
-#define check character
+# WG_CP2: Character search functionality for searching through characters
 def check_char(characters):
     while True:
         search_val = input("Do you want to search for? This can be a name, a race, a class, or having a certain number in any attribute. ").strip().lower()
@@ -48,25 +44,19 @@ def check_char(characters):
 
         print(f"{choice} is not an option; try again.")
 
-#character search function
+# Character search function: call check_char with characters argument and search value
 def char_search(characters):
-    #call check_char with characters argunment, & search value
     check = check_char(characters)
     dict_display(check, characters)
-    #ask if they want to exit
+    # Ask if they want to exit
     exit = input("Do you want to exit the searching? do not answer until you are done looking over the character. y/n ").strip().lower()
-    #if exit is no
-
+    # If exit is 'n', continue recursively; else break
     if exit == "n":
-        #continue
         char_search(characters)
-
-    #else   
     else:
-        #break
         return
 
-#character display function
+# Character display function
 def _format_item_display(item):
     # item can be dict with 'name' and 'stats', a string, or other dict/list
     if isinstance(item, dict) and 'name' in item and 'stats' in item:

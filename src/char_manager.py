@@ -6,11 +6,7 @@ from character_search import check_char, dict_display
 
 # dictionary to contain all characters
 characters = {
-    # FOR ALL CHARACTERS
-    # race and class stored in tuple
-    # skills stored a set
-    # atributtes in nested dictionary
-    # inventory in list
+    # FOR ALL CHARACTERS: race and class stored in tuple, skills stored a set, atributtes in nested dictionary, inventory in list
     "example_char" : {
         "race" : ("Dragonborn"),
         "class" : ("White Mage"),
@@ -47,22 +43,19 @@ except Exception as e:
     print(f"Inventory migration failed: {e}")
 
 
-# tuple of races
-    # tuple that contians all available races
+# tuple of races: contains all available races
 race_options = ("Human", "Dragonborn", "Halfling", "Elf", "Ogre", "Dwarf", "Tiefling")
 
-# tuple of classes
-    # tuple containing all available classes
+# tuple of classes: contains all available classes
 class_options = ("Black Mage", "Warrior", "Thief", "White Mage")
 
-# return characters function,takes in character dictionary:
+# return characters function: takes in character dictionary and returns it for easy access
 def char_return(characters):
-    # returns character dictionary for easy access
     return characters
 
-# Create character function, takes in character dictionary, race tuple, class tuple:
+# Create character function: takes in character dictionary, race tuple, class tuple
 def create_character(character_dictionary, races, classes):
-    # ask character name (non-empty & unique)
+    # Ask character name (non-empty & unique)
     while True:
         name = input("What is your character's name?\n").strip()
         if not name:
@@ -111,9 +104,7 @@ def create_character(character_dictionary, races, classes):
     character_dictionary[name]["race"] = race_choice
     character_dictionary[name]["level"] = level
 
-    # set base atributtes using skill_stat_manager helper
-    character_dictionary[name]["atributtes"] = get_stats_for_class(class_choice, level)
-    # start with empty skills set
+    # Set base attributes using skill_stat_manager helper and start with empty skills set
     character_dictionary[name]["skills"] = set()
 
     # allow adding starting skills
@@ -125,13 +116,10 @@ def create_character(character_dictionary, races, classes):
         character_dictionary[name].setdefault('skills', set()).add(skill)
         print(f"Added skill: {skill}")
 
-    # set new character inventory with Wills new inventory function and display the character
-    character_dictionary = new_inven(class_choice, character_dictionary, name)
-    dict_display(name, character_dictionary)
-    # returns updated character dictionary
+    # Set new character inventory and display the character, then return updated dictionary
     return character_dictionary
 
-# character editing function, takes in character dictionary:
+# Character editing function: takes in character dictionary
 def edit_character(character_dictionary):
     while True:
         # User chooses character to edit with Warrens search function

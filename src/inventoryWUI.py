@@ -1,24 +1,4 @@
-# WM 1st pseudocode
-
-#UI
-    #Create a function for the main interface, just named main()
-    #Have it greet them to the program.
-    #Start a while true loop that will keep the code going until the user chooses to exit.
-    #They will be asked what they want to do, 1.Make a character 2.Edit a character 3.Search for a character 4.Exit
-    #Each option will call a different funtion
-
-
-
-#Inventory
-    #Make a dictionary for the items in the game, split into several pieces.
-    #It would start with a split between weapons, equipment, and armor.
-        #The weapons would then seperate based on class restrictions
-            #Then each weapon would have its own stats
-        #The equipment would be split into ones with one stat increased, two stats, and three stats.
-            #There will be one for each of the one stat, but the two and three stats would only be with ones that make sense.
-        #Armor would also be class restricted, based on what was choosen in creator.
-            #There would be a few options for each class, with them affecting defense, evasion, speed, and spirit differently
-    #Make a function for creating a character inventory.
+# WM 1st pseudocode for Inventory UI system with main interface loop and item dictionary by class
 
 items = {
     'Warrior':{
@@ -320,7 +300,7 @@ _num_to_word = {1: 'one', 2: 'two', 3: 'three', 4: 'four'}
 
 
 def find_item_by_name(name):
-    """Return {'name', 'stats'} for a matching item name (case-insensitive), or None if not found."""
+    # Return {'name', 'stats'} for a matching item name (case-insensitive), or None if not found.
     if not name or not isinstance(name, str):
         return None
     target = name.strip().lower()
@@ -341,9 +321,8 @@ def find_item_by_name(name):
 
 
 def migrate_inventories(characters):
-    """Migrate inventory entries stored as lists/strings into structured format {'name','stats'}.
-    Unknown items are preserved as {'name': <name>, 'stats': {}} so they still print nicely.
-    """
+    # Migrate inventory entries stored as lists/strings into structured format {'name','stats'}.
+    # Unknown items are preserved as {'name': <name>, 'stats': {}} so they still print nicely.
     changed = 0
     for cname, cdata in characters.items():
         inv = cdata.setdefault('inventory', {})
@@ -541,10 +520,4 @@ def edit_inven(char_dict, char_name, char_class):
         else:
             print("Not an option.")
 
-        #It will search for keywords like warrior or mage in their class and mark variables as true where needed.
-        #It will print all the valid items for them
-        #It would start with weapons and the armor, and then finally do equipment. a variable would keep track of how many equipment they choose, so it will end when they get all 4.
-        #All of these would loop until a variable for each becomes true, and lets it move on.
-        #It would finally return the character dictionary at the end.
-        #When they choose an item, it will use that to search for the item, and if it exists, it will append it to the character dictionaray.
-    #Make a fucntion for editing an already made character
+        # Searches by class keywords, prints valid items, tracks equipment selections, and returns updated character dict. Make a function for editing an already made character
